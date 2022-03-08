@@ -1,2 +1,2 @@
-READ.md 
-csc468cloud
+csc468Cloud
+
