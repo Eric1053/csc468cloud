@@ -1,5 +1,5 @@
 import time
-import fastapi import FASTAPI
+from fastapi import FASTAPI
 from pydantic import BaseModel
 
 app = FASTAPI()
