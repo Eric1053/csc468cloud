@@ -4,7 +4,7 @@ import logging
 import mysql.connector
 
 try:
-    connection = mysql.connector.connect(host='localhost',database='coinminer',user=' ', password=' '
+    connection = mysql.connector.connect(host='localhost',database='coinminer', user='3306', password='IloveCloud '
     )
     cursor = connection.cursor()
 except mysql.connector.Error as error:
