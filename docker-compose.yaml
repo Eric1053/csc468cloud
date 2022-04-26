@@ -5,11 +5,11 @@ services:
     build: rng
     ports:
     - "8001:80"
-   worker:
-     build: worker
-     ports:
-     - "8002:80"
+    
   hasher:
     build: hasher
     ports:
-    - "8003:80"
+    - "8002:80"
+    
+  worker:
+    build: worker
