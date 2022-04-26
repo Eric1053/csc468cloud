@@ -1,5 +1,7 @@
 import time
 import hashlib
+from flask import Flask
+app = Flask(__name__)
 
 @app.route('/')
 def hash(int):
