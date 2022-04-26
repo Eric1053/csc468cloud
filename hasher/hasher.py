@@ -1,15 +1,11 @@
 import time
-from fastapi import FASTAPI
-from pydantic import BaseModel
-
-app = FASTAPI()
+from flask import Flask
 import hashlib
-
+app = Flask(__name__)
 @app.route('/')
-def hash((fastapi_req: fastapi.Request)):
-    body = await fastapi_req.body():
+def hash(int):
     time.sleep(1)
-    hashed_rng = hashlib.sha256(body.encode()).hexdigest()
+    hashed_rng = hashlib.sha256(int.encode()).hexdigest()
     return hashed_rng
 
 
