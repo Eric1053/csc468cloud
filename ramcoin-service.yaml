@@ -23,3 +23,25 @@ spec:
       targetPort: 80  
   selector:    
       app: hasher
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+      - name: worker
+        image: 127.0.0.1:30000/worker:v0.1
+        ports:
+          - name: http-port
+            containerPort: 80
