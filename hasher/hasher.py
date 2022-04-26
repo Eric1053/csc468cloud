@@ -1,6 +1,6 @@
 import time
 import hashlib
-app = Flask(__name__)
+
 @app.route('/')
 def hash(int):
     time.sleep(1)
