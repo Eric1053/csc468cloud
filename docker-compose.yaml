@@ -5,7 +5,6 @@ services:
     build: rng
     ports:
     - "8001:80"
- services:
    worker:
      build: worker
      ports:
