@@ -14,7 +14,7 @@ services:
   hasher:
     build: hasher
     ports:
-    - "8003:80"
+    - "8002:80"
     logging:
       driver: gelf
       options:
@@ -22,8 +22,6 @@ services:
 
   worker:
     build: worker
-    ports:
-    - "8002:80"
     logging:
       driver: gelf
       options:
