@@ -68,7 +68,7 @@ app = Flask(__name__)
 
         
 def get_bitcoin_bytes():
-    r = requests.get("http://rng/ra")
+    r = requests.get("http://rng/randomNumber")
     return r.content
    
 def hash_bytes(data):
