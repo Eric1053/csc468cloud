@@ -53,8 +53,7 @@ import requests
 import time
 import logging
 import mysql.connector
-from flask import Flask, Response
-app = Flask(__name__)
+
 # try:
 #     connection = mysql.connector.connect(host='localhost',database='coinminer',user= ' ', password=' '
 #     )
@@ -104,8 +103,6 @@ def hash_bytes(data):
     # created = redis.hset("wallet", hex_hash, random_bytes)
     # if not created:
     #     logging.info("We already had that coin")
-
-@app.route('/raa')
 def work_loop(interval=1):
     deadline = 0
     loops_done = 0
