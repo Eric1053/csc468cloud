@@ -1,7 +1,7 @@
 pipeline {
     agent none 
     environment {
-        docker_user = "Eric1053"
+        docker_user = "eric1053"
     }
     stages {
         stage('Publish') {
