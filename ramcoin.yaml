@@ -1,6 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: webui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webui
+  template:
+    metadata:
+      labels:
+        app: webui
+    spec:
+      containers:
+      - name: webui
+        image: 127.0.0.1:32566/webui:v0.1
+        ports:
+          - name: http-port
+            containerPort: 80
+            
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: rng
 spec:
   replicas: 1
@@ -14,11 +37,11 @@ spec:
     spec:
       containers:
       - name: rng
-        image: 127.0.0.1:30000/rng:v0.1
+        image: 127.0.0.1:32566/rng:v0.1
         ports:
           - name: http-port
             containerPort: 80
-
+            
 ---
 
 apiVersion: apps/v1
@@ -36,12 +59,12 @@ spec:
         app: hasher
     spec:
       containers:
-      - name: hasher
-        image: 127.0.0.1:30000/hasher:v0.1
+      - name: webui
+        image: 127.0.0.1:32566/hasher:v0.1
         ports:
           - name: http-port
             containerPort: 80
-
+            
 ---
 
 apiVersion: apps/v1
@@ -59,8 +82,31 @@ spec:
         app: worker
     spec:
       containers:
-      - name: worker
-        image: 127.0.0.1:30000/worker:v0.1
+      - name: webui
+        image: 127.0.0.1:32566/worker:v0.1
         ports:
           - name: http-port
             containerPort: 80
+            
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis
+        ports:
+          - name: http-port
+            containerPort: 6379
