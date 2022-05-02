@@ -3,17 +3,25 @@ version: "3"
 services:
   rng:
     build: rng
-    image: 127.0.0.1:30000/rng:v0.1
+    image: ${REGISTRY-127.0.0.1:5000}/rng:${TAG-latest}
     deploy:
       mode: global
 
   hasher:
     build: hasher
-    deploy:
-    image: 127.0.0.1:30000/hasher:v0.1
-    
+    image: ${REGISTRY-127.0.0.1:5000}/hasher:${TAG-latest}
+
+  webui:
+    build: webui
+    image: ${REGISTRY-127.0.0.1:5000}/webui:${TAG-latest}
+    ports:
+    - "8000:80"
+
+  redis:
+    image: redis
+
   worker:
     build: worker
-    image: 127.0.0.1:30000/worker:v0.1
+    image: ${REGISTRY-127.0.0.1:5000}/worker:${TAG-latest}
     deploy:
       replicas: 10
