@@ -24,4 +24,4 @@ while IFS= read -r line; do
   sudo chown $line: /users/$line/.kube/config
 done < <( ls -l /users | grep 4096 | cut -d' ' -f3 )
 
-sudo -H -u EG983582 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')" 
+sudo -H -u lngo kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')" 
